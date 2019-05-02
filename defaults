@@ -1,0 +1,43 @@
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+# Reduce motion
+defaults write com.apple.universalaccess reduceMotion -bool true
+# Reduce transparency
+defaults write com.apple.universalaccess reduceTransparency -bool true
+
+# Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null 
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false 
+
+# Disable crash reporting
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+# Disable dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+# Disable Spotlight indexing
+sudo mdutil -a -i off
+
+
+# Disable live conversion
+defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+
+
+# Safari
+# Disable reporting search query
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# Finder
+# Disable animations
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Time Machine
+sudo tmutil stopbackup
