@@ -2,13 +2,26 @@
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
-
 # Reduce motion
 defaults write com.apple.universalaccess reduceMotion -bool true
 # Reduce transparency
 defaults write com.apple.universalaccess reduceTransparency -bool true
+
+# Disable animations
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g QLPanelAnimationDuration -float 0
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-delay -float 0
+
+# showing and hiding Launchpad
+defaults write com.apple.dock springboard-show-duration -float 0
+defaults write com.apple.dock springboard-hide-duration -float 0
+defaults write com.apple.dock springboard-page-duration -float 0
+
+defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null 
@@ -39,5 +52,11 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 # Disable animations
 defaults write com.apple.finder DisableAllAnimations -bool true
 
+
 # Time Machine
 sudo tmutil stopbackup
+
+
+# Disable services
+launchctl unload -w /System/Library/LaunchAgents/com.apple.CalendarAgent.plist
+launchctl unload -w /System/Library/CoreServices/AirPlayUIAgent.app/Contents/MacOS/AirPlayUIAgent
