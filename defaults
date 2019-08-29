@@ -9,6 +9,7 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Disable animations
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSWindowResizeTime -float 0.001
 defaults write -g QLPanelAnimationDuration -float 0
 
 # Automatically hide and show the Dock
@@ -47,6 +48,8 @@ defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
 # Disable reporting search query
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+# Reduce initial delay
+defaults write com.apple.Safari WebKitInitialTimedLayoutDelay -int 0
 
 # Finder
 # Disable animations
@@ -56,6 +59,9 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 # Time Machine
 sudo tmutil stopbackup
 
+# Text Input
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable services
 launchctl unload -w /System/Library/LaunchAgents/com.apple.CalendarAgent.plist 1&> /dev/null
